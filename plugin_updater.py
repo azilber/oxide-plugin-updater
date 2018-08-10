@@ -3,8 +3,8 @@ import urllib3
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 
-VERSION = "1.0.5"
-
+VERSION = "1.0.6"
+check = "new"
 
 parser = argparse.ArgumentParser(description='Oxide plugin updater')
 requiredNamed = parser.add_argument_group('required named arguments')
@@ -169,8 +169,8 @@ def download_file(s, url, filename):
 
 def download_plugins(session):
     for plugin in plugins:
-        plugin_page = 'https://oxidemod.org/plugins/' + plugin.resource_id
-        r = session.get(plugin_page)
+       	plugin_page = 'https://oxidemod.org/plugins/' + plugin.resource_id
+	r = session.get(plugin_page)
 
         print("-> " + str(plugin))
         pattern = r"""plugins/.*\.""" + plugin.resource_id + """/download\?version=([0-9]*)"""
@@ -180,8 +180,9 @@ def download_plugins(session):
             download_url = 'http://oxidemod.org/plugins/' + urllib.quote_plus(plugin.name) + '.' + plugin.resource_id + "/download?version=" + version_id
             download_file(session, download_url, plugin.filename)
         else:
-            not_added.append(plugin.filename + "Reason: Couldnt find download link. Page: " + plugin_page)
-            download_file(session, plugin_page, plugin.filename + ".page")
+            not_added.append(plugin.filename)
+
+
 
 
 def printInfo(message):
