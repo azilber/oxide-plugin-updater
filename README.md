@@ -3,7 +3,7 @@
 
 # NOTICE
 ## This is the last update as all plugins are moving to https://umod.org/
-## It's not very easy to use a bash script to download plugins.
+## It's now very easy to use a bash script to download plugins.
 ## See example: plugins-from-list.sh
 
 ### This final update includes a patch and hacky scripts to download BOTH
